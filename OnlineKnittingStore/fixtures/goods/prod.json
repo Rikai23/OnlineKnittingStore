@@ -1,0 +1,236 @@
+[
+{
+    "model": "goods.products",
+    "pk": 1,
+    "fields": {
+        "name": "Милый зайчик",
+        "slug": "milyj-zajchik",
+        "description": "Мягкий и уютный зайка, связанный вручную из гипоаллергенной плюшевой пряжи. \r\nИдеальный подарок для детей и милое украшение интерьера.",
+        "price": "2000.00",
+        "discount": "0.00",
+        "quantity": 3,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 2,
+    "fields": {
+        "name": "Кукла 'Тильда",
+        "slug": "kukla-tilda",
+        "description": "Очень модна кукла. Вариант подарка для юных принцесс.",
+        "price": "3200.00",
+        "discount": "0.00",
+        "quantity": 5,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 3,
+    "fields": {
+        "name": "Лабубу",
+        "slug": "labubu",
+        "description": "Этот вязаный Лабубу выполнен вручную в технике амигуруми. \r\nУютный, пушистый и невероятно милый, он легко станет любимым талисманом или украшением комнаты",
+        "price": "3500.00",
+        "discount": "40.00",
+        "quantity": 1,
+        "category": 2
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 4,
+    "fields": {
+        "name": "Вязаная сумка «Лаванда»",
+        "slug": "vyazanaya-sumka-lavanda",
+        "description": "Стильная вязаная сумка ручной работы в нежных тонах. Лёгкая, вместительная и удобная для повседневных прогулок и встреч.",
+        "price": "3200.00",
+        "discount": "0.00",
+        "quantity": 1,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 5,
+    "fields": {
+        "name": "Вязаная сумка «Осенний уют»",
+        "slug": "vyazanaya-sumka-osennij-uyut",
+        "description": "Тёплая и практичная сумка из плотной пряжи. Отлично подойдёт для осенних образов и станет ярким акцентом вашего стиля.",
+        "price": "2900.00",
+        "discount": "0.00",
+        "quantity": 1,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 6,
+    "fields": {
+        "name": "Вязаная сумка «Мини-шик»",
+        "slug": "vyazanaya-sumka-mini-shik",
+        "description": "Компактная сумка ручной работы для самых необходимых мелочей. Идеальный вариант для прогулок и свиданий.",
+        "price": "4000.00",
+        "discount": "30.00",
+        "quantity": 1,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 7,
+    "fields": {
+        "name": "Вязаный брелок «Котик»",
+        "slug": "vyazanyj-brelok-kotik",
+        "description": "Милый вязаный брелок в виде котика, выполненный вручную. Поднимет настроение и станет отличным сувениром.",
+        "price": "800.00",
+        "discount": "0.00",
+        "quantity": 1,
+        "category": 5
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 8,
+    "fields": {
+        "name": "Вязаный брелок «Сердечко»",
+        "slug": "vyazanyj-brelok-serdechko",
+        "description": "Нежный аксессуар для ключей или сумки. Прекрасный символ заботы и внимания для близкого человека.",
+        "price": "650.00",
+        "discount": "20.00",
+        "quantity": 2,
+        "category": 5
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 9,
+    "fields": {
+        "name": "Вязаный брелок «Медвежонок»",
+        "slug": "vyazanyj-brelok-medvezhonok",
+        "description": "Очаровательный брелок ручной работы из мягкой пряжи. Подойдёт для детей и взрослых.",
+        "price": "900.00",
+        "discount": "0.00",
+        "quantity": 1,
+        "category": 5
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 10,
+    "fields": {
+        "name": "Вязаные перчатки «Зимний комфорт»",
+        "slug": "vyazanye-perchatki-zimnij-komfort",
+        "description": "Тёплые вязаные перчатки ручной работы из мягкой пряжи. Надёжно защищают руки от холода и приятно сидят по руке.",
+        "price": "1500.00",
+        "discount": "0.00",
+        "quantity": 3,
+        "category": 4
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 11,
+    "fields": {
+        "name": "Вязаный шарф «Нежность»",
+        "slug": "vyazanyj-sharf-nezhnost",
+        "description": "Мягкий и лёгкий вязаный шарф, который создаёт уют и дополняет любой образ в холодное время года.",
+        "price": "1750.00",
+        "discount": "40.00",
+        "quantity": 2,
+        "category": 4
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 12,
+    "fields": {
+        "name": "Вязаный свитер «Домашний уют»",
+        "slug": "vyazanyj-sviter-domashnij-uyut",
+        "description": "Тёплый свитер ручной вязки из качественной пряжи. Идеален для холодных вечеров и повседневной носки.",
+        "price": "4500.00",
+        "discount": "15.00",
+        "quantity": 1,
+        "category": 4
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 13,
+    "fields": {
+        "name": "Вязаная сумка «Сканди»",
+        "slug": "vyazanaya-sumka-skandi",
+        "description": "Лаконичная сумка в скандинавском стиле, выполненная из плотной пряжи. Подойдёт к повседневному и деловому образу.",
+        "price": "4000.00",
+        "discount": "0.00",
+        "quantity": 0,
+        "category": 3
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 14,
+    "fields": {
+        "name": "Вязаный брелок «Зайчик»",
+        "slug": "vyazanyj-brelok-zajchik",
+        "description": "Милый брелок в виде зайчика из мягкой пряжи. Отлично подойдёт для детских рюкзаков и ключей.",
+        "price": "500.00",
+        "discount": "0.00",
+        "quantity": 0,
+        "category": 5
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 15,
+    "fields": {
+        "name": "Вязаный брелок «Звёздочка»",
+        "slug": "vyazanyj-brelok-zvyozdochka",
+        "description": "Небольшой вязаный аксессуар в форме звезды. Добавит уюта и индивидуальности вашим вещам.",
+        "price": "750.00",
+        "discount": "20.00",
+        "quantity": 0,
+        "category": 5
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 16,
+    "fields": {
+        "name": "Вязаный кардиган «Комфорт»",
+        "slug": "vyazanyj-kardigan-komfort",
+        "description": "Мягкий и уютный кардиган ручной вязки для дома и прогулок в прохладное время года.",
+        "price": "5000.00",
+        "discount": "0.00",
+        "quantity": 0,
+        "category": 4
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 17,
+    "fields": {
+        "name": "Вязаные носки «Домашнее тепло»",
+        "slug": "vyazanye-noski-domashnee-teplo",
+        "description": "Тёплые носки из натуральной пряжи. Отличное решение для холодных вечеров и уютного отдыха.",
+        "price": "1200.00",
+        "discount": "50.00",
+        "quantity": 0,
+        "category": 4
+    }
+},
+{
+    "model": "goods.products",
+    "pk": 18,
+    "fields": {
+        "name": "Вязаная сумка «Городской ритм»",
+        "slug": "vyazanaya-sumka-gorodskoj-ritm",
+        "description": "Современная вязаная сумка для активной жизни в городе. Вместительная и износостойкая.",
+        "price": "3500.00",
+        "discount": "0.00",
+        "quantity": 0,
+        "category": 3
+    }
+}
+]

@@ -1,0 +1,194 @@
+[
+{
+    "model": "goods.productimage",
+    "pk": 1,
+    "fields": {
+        "product": 1,
+        "image": "goods_images/Милый_Зайяик_1_fWaAxAH.JPG"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 2,
+    "fields": {
+        "product": 2,
+        "image": "goods_images/Тильда_1_7FdVf2L.JPG"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 3,
+    "fields": {
+        "product": 3,
+        "image": "goods_images/Лабубу_1_sGHdjb2.JPG"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 4,
+    "fields": {
+        "product": 4,
+        "image": "goods_images/Сумка_Лаванда_1_X2LzCNi.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 5,
+    "fields": {
+        "product": 4,
+        "image": "goods_images/Сумка_Лаванда_2_nOoYHd0.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 6,
+    "fields": {
+        "product": 5,
+        "image": "goods_images/Сумка_Осенний_Уют_1_1do27VN.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 7,
+    "fields": {
+        "product": 6,
+        "image": "goods_images/Сумка_Мини_Шик_1_dLwSZQW.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 8,
+    "fields": {
+        "product": 6,
+        "image": "goods_images/Сумка_Мини_Шик_2_lyrihWx.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 9,
+    "fields": {
+        "product": 7,
+        "image": "goods_images/Брелок_Котик_1_gDhQqSy.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 10,
+    "fields": {
+        "product": 7,
+        "image": "goods_images/Брелок_Котик_2_jMGxEuW.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 11,
+    "fields": {
+        "product": 8,
+        "image": "goods_images/Брелок_Сердечко_1_ZLIS8i0.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 12,
+    "fields": {
+        "product": 8,
+        "image": "goods_images/Брелок_Сердечко_2_Hq2zPIb.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 13,
+    "fields": {
+        "product": 8,
+        "image": "goods_images/Брелок_Сердечко_3_nYQYCFD.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 14,
+    "fields": {
+        "product": 8,
+        "image": "goods_images/Брелок_Сердечко_4_fhtbBmQ.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 15,
+    "fields": {
+        "product": 9,
+        "image": "goods_images/Брелок_Медвежонок_1_ICaL8m2.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 16,
+    "fields": {
+        "product": 9,
+        "image": "goods_images/Брелок_Медвежонок_2_gEtBJPr.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 17,
+    "fields": {
+        "product": 10,
+        "image": "goods_images/Перчатки_Зимний_комфорт_1_RfdoI35.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 18,
+    "fields": {
+        "product": 11,
+        "image": "goods_images/Шарф_Нежность_1_qIQpwSz.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 19,
+    "fields": {
+        "product": 11,
+        "image": "goods_images/Шарф_Нежность_2_5EUQUFT.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 20,
+    "fields": {
+        "product": 11,
+        "image": "goods_images/Шарф_Нежность_3_FY106FM.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 21,
+    "fields": {
+        "product": 12,
+        "image": "goods_images/Свитер_Домашний_УЮТ_1_c0MjAAx.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 22,
+    "fields": {
+        "product": 12,
+        "image": "goods_images/Свитер_Домашний_УЮТ_2_RNZxdhS.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 23,
+    "fields": {
+        "product": 12,
+        "image": "goods_images/Свитер_Домашний_УЮТ_3_2hwP9bf.jpg"
+    }
+},
+{
+    "model": "goods.productimage",
+    "pk": 24,
+    "fields": {
+        "product": 12,
+        "image": "goods_images/Свитер_Домашний_УЮТ_4_7DVJdLe.jpg"
+    }
+}
+]

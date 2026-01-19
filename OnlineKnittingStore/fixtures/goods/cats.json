@@ -1,0 +1,56 @@
+[
+{
+    "model": "goods.categories",
+    "pk": 1,
+    "fields": {
+        "name": "Все товары",
+        "image": "goods_images/all_cat.jpg",
+        "slug": "all"
+    }
+},
+{
+    "model": "goods.categories",
+    "pk": 2,
+    "fields": {
+        "name": "Игрушки",
+        "image": "goods_images/toys_cat.jpg",
+        "slug": "igrushki"
+    }
+},
+{
+    "model": "goods.categories",
+    "pk": 3,
+    "fields": {
+        "name": "Сумки",
+        "image": "goods_images/bags_cat.jpg",
+        "slug": "sumki"
+    }
+},
+{
+    "model": "goods.categories",
+    "pk": 4,
+    "fields": {
+        "name": "Одежда",
+        "image": "goods_images/clothes_cat.jpg",
+        "slug": "odezhda"
+    }
+},
+{
+    "model": "goods.categories",
+    "pk": 5,
+    "fields": {
+        "name": "Брелки",
+        "image": "goods_images/keyChains_cat.jpg",
+        "slug": "brelki"
+    }
+},
+{
+    "model": "goods.categories",
+    "pk": 6,
+    "fields": {
+        "name": "Распродажа",
+        "image": "goods_images/sale_cat.png",
+        "slug": "sale"
+    }
+}
+]

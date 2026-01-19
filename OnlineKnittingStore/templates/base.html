@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+{% load goods_tags %}
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'deps/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic">
+    <link rel="stylesheet" href="{% static 'deps/fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+    <!-- Локальные стили -->
+    {% block local_css %} {% endblock local_css %}
+
+    <!-- Иконки для разных платформ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple_touch_yarn_ball_180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon_yarn_ball_32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon_yarn_ball_16x16.png' %}">
+    <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="{% url 'main:index' %}">Вязаные изделия</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-align-justify"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'main:index' %}#about">Информация</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'main:index' %}#delivery">Доставка</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'catalog:index' 'all' %}">Каталог</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'main:index' %}#contact">Контакты</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}#basket">Корзина</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}#account">Войти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+     {% tag_categories as categories %}
+
+    {% block content %}{% endblock content %}
+    {% block footer %}{% endblock footer%}
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'deps/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bs-init.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <script src="{% static 'js/creative.js' %}"></script>
+
+</body>

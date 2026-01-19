@@ -135,9 +135,9 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
-.envrc
-.venv
+OnlineKnittingStore/.env
+OnlineKnittingStore/.envrc
+OnlineKnittingStore/.venv
 env/
 venv/
 ENV/
@@ -205,3 +205,11 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Django specific
+db.sqlite3
+OnlineKnittingStore/media/
+
+# PyCharm specific
+.idea/
+*.iml

@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block local_css %}
+    <link rel="stylesheet" href="{% static 'css/my_footer.css' %}">
+{% endblock local_css %}
+
+{% block content %}
+<header class="text-center text-white d-flex masthead" style="background: url('{% static "images/background_main_hello.jpg" %}');">
+        <div class="container my-auto">
+            <div class="row">
+                <div class="col-lg-10 mx-auto">
+                    <h1 class="text-uppercase"><strong style="border-color: var(--pink);color: var(--light);font-family: Merriweather, serif;">{{ texts.0.title }}</strong></h1>
+                </div>
+            </div>
+            <div class="col-lg-8 mx-auto" style="padding: 37px;">
+                <p class="text-faded mb-5" style="color: var(--light);font-family: Merriweather, serif;"><strong>{{ texts.0.desc }}</strong><br></p>
+            </div>
+        </div>
+    </header>
+    <section class="clean-block clean-info" id="about" style="background: #ffffff;height: auto;padding: 90px 0px;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8" style="margin-top: 73px;">
+                    <h1 style="font-weight: 600;color: rgb(136,137,139);font-family: Merriweather, serif;">ИНФОРМАЦИЯ О ПРОДУКЦИИ<br></h1>
+                    <div class="getting-started-info">
+                        <p style="font-family: Merriweather, serif;height: auto;"><br>Все изделия нашего магазина создаются вручную с любовью и вниманием к каждой детали.
+                            Мы используем только&nbsp;<strong>качественную пряжу</strong>, безопасные материалы и проверенные технологии вязания.<br>
+                            <br>В нашем ассортименте вы найдёте уникальные&nbsp;<strong>игрушки, аксессуары и элементы декора</strong>,
+                            которые станут отличным подарком или украшением вашего дома.<br><br>Каждое изделие — это&nbsp;<strong>авторская работа</strong>,
+                            выполненная с душой и заботой о вас.<br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4" style="margin-top: 73px;padding-right: 0px;">
+                    <div class="carousel slide" data-ride="carousel" data-interval="3000" id="carousel-1">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active"><img class="img-thumbnail w-100 d-block" src="{% static 'images/about_products1.jpg' %}" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="img-thumbnail w-100 d-block" src="{% static 'images/about_products2.jpg' %}" alt="Slide Image"></div>
+                            <div class="carousel-item"><img class="img-thumbnail w-100 d-block" src="{% static 'images/about_products3.jpg' %}" alt="Slide Image"></div>
+                        </div>
+                        <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-slide="prev"><span class="carousel-control-prev-icon"></span><span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-slide="next"><span class="carousel-control-next-icon"></span><span class="sr-only">Next</span></a></div>
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-1" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-1" data-slide-to="1"></li>
+                            <li data-target="#carousel-1" data-slide-to="2"></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="border rounded-0 border-primary" id="delivery" style="height: auto;padding: 95px 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading" style="font-family: Merriweather, serif;"><strong>ДОСТАВКА</strong></h2>
+                    <hr class="my-4">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="mx-auto service-box mt-5"><i class="fa fa-user fa-4x text-primary mb-3 sr-icons" data-aos="zoom-in" data-aos-duration="200" data-aos-once="true"></i>
+                        <h3 class="mb-3">САМОВЫВОЗ</h3>
+                        <p class="text-muted mb-0">Заберите заказ самостоятельно в нашем магазине в удобное время по предварительной договорённости.<br></p>
+                    </div>
+                    <p><strong>Бесплатно</strong></p>
+                </div>
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="mx-auto service-box mt-5"><i class="fa fa-truck fa-4x text-primary mb-3 sr-icons" data-aos="zoom-in" data-aos-duration="200" data-aos-delay="200" data-aos-once="true"></i>
+                        <h3 class="mb-3">ПОЧТА РОССИИ</h3>
+                        <p class="text-muted mb-0">Доставка по всей России в течение 3–7 дней. После отправки вы получите трек-номер для отслеживания.<br></p>
+                    </div>
+                    <p><strong>от 500 Руб.</strong></p>
+                </div>
+                <div class="col-md-6 col-lg-4 text-center">
+                    <div class="mx-auto service-box mt-5" style="height: 201px;"><i class="fa fa-dropbox fa-4x text-primary mb-3 sr-icons" data-aos="zoom-in" data-aos-duration="200" data-aos-delay="400" data-aos-once="true"></i>
+                        <h3 class="mb-3">СДЭК</h3>
+                        <p class="text-muted mb-0">Доставка до пункта выдачи СДЭК в вашем городе. Срок доставки от 1 до 3 дней.<br></p>
+                    </div>
+                    <p><strong>при заказе от 3000 Руб.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="catalog" class="p-0" style="height: auto;">
+        <div class="container-fluid p-0">
+            <div class="row no-gutters">
+                {% for category in categories %}
+                    <div class="col-sm-6 col-lg-4">
+                        <a class="portfolio-box" href="{% url 'catalog:index' category.slug %}">
+                            <img class="img-fluid" src="{{ category.image.url }}" alt="{{ product.name }}">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <div class="project-category text-faded"></div>
+                                    <div class="project-name"><span style="font-family: Merriweather, serif;">{{ category.name }}</span></div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center mx-auto">
+                    <h2 class="section-heading" style="font-family: Merriweather, serif;"><strong>КОНТАКТЫ</strong></h2>
+                    <hr class="my-4">
+                    <p class="mb-5">Если у вас есть вопросы, предложения или хотите оформить заказ — свяжитесь со мной удобным способом. Я всегда на связи и буду рад помочь!<br><br></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-3 offset-xl-1 text-center ml-auto"><i class="fa fa-phone fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
+                    <p>8-999-111-22-33</p>
+                </div>
+                <div class="col-lg-4 col-xl-3 offset-xl-1 text-center mr-auto"><i class="fa fa-vk fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-delay="300" data-aos-once="true"></i>
+                    <p><a href="https://vk.com/your_vk"><span style="text-decoration: underline;">https://vk.com/your_vk</span></a></p>
+                </div>
+                <div class="col-lg-4 col-xl-3 offset-xl-1 text-center ml-auto"><i class="fa fa-telegram fa-3x mb-3 sr-contact" data-aos="zoom-in" data-aos-duration="300" data-aos-once="true"></i>
+                    <p><a href="https://t.me/your_telegram"><span style="text-decoration: underline;">https://t.me/your_telegram</span></a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="footer-2" style="background: var(--primary);">
+        <div class="container">
+            <div class="row">
+                <div class="col-8 col-sm-6 col-md-6">
+                    <p class="text-left" style="margin-top:5%;margin-bottom:3%;">© 2025 Вязаные изделия. Все права защищены.<br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

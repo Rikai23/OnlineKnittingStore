@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% load static %}
+{% load goods_tags %}
+
+{% block local_css %}
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+{% endblock local_css %}
+
+{% block content %}
+<section id="catalog" style="height: auto;padding: 95px 0px;">
+        <div class="container">
+            <div class="row">
+                <!-- Панель фильтров -->
+                <div class="container my-4">
+                    <div class="card p-3">
+
+                        <form method="get" action="{% url 'catalog:index' category_slug %}" class="row gy-2 gx-3 align-items-center">
+                            <!-- Категории -->
+                            <div class="col-md-8">
+                                <label class="form-label fw-semibold mb-2">Категории:</label>
+                                <div class="btn-group flex-wrap" role="group">
+
+                                    <a href="{% url 'catalog:index' 'all' %}"
+                                       class="btn btn-outline-primary {% if category_slug == 'all' %}active{% endif %}">
+                                        Все
+                                    </a>
+
+                                    {% for category in categories %}
+                                        {% if category.slug != 'all' and category.slug != 'sale' %}
+                                            <a href="{% url 'catalog:index' category.slug %}"
+                                               class="btn btn-outline-primary {% if category_slug == category.slug %}active{% endif %}">
+                                                {{ category.name }}
+                                            </a>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    <a href="{% url 'catalog:index' 'sale' %}"
+                                       class="btn btn-outline-danger {% if category_slug == 'sale' %}active{% endif %}">
+                                        Распродажа
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Поиск -->
+                            <div class="col-12 col-md-6 col-lg-3">
+                                <div class="d-flex mt-2" style="gap: 1rem;">  <!-- gap = 1rem ~ 16px -->
+                                    <input type="search"
+                                           name="q"
+                                           value="{{ search_query }}"
+                                           class="form-control"
+                                           placeholder="Поиск"
+                                           style="flex: 1;">  <!-- поле занимает всё доступное место -->
+                                    <button class="btn btn-primary" type="submit">
+                                        Поиск
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Сортировка -->
+                            <div class="col-md-4">
+                                <label for="sort" class="form-label fw-semibold">Сортировка:</label>
+                                <select name="sort" id="sort" class="form-select" onchange="this.form.submit()">
+                                    <option value="" {% if not sort_value %}selected{% endif %}>Без сортировки</option>
+                                    <option value="date_desc" {% if sort_value == 'date_desc' %}selected{% endif %}>
+                                        По дате (новые → старые)
+                                    </option>
+                                    <option value="date_asc" {% if sort_value == 'date_asc' %}selected{% endif %}>
+                                        По дате (старые → новые)
+                                    </option>
+                                </select>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+                {% for product in goods %}
+                    <!-- Карта товара -->
+                    <div class="col-md-6 col-lg-4 text-center mb-4">
+
+                        <div class="card p-3 p-3 h-100" style="max-height: 750px; display: flex; flex-direction: column;">
+                            {% with product.images.first as main_img %}
+                                {% if main_img %}
+                                    <img src="{{ main_img.image.url }}" class="card-img-top"  style="height: 350px; object-fit: cover;" alt="{{ product.name }}">
+                                {% else %}
+                                    <img src="{% static 'images/no_photo.jpg' %}" class="card-img-top"  style="height: 350px; object-fit: cover;" alt="...">
+                                {% endif %}
+                            {% endwith %}
+                            <div class="card-body d-flex flex-column justify-content-between">
+                                <a href="{% url 'catalog:product' product.slug %}">
+                                    <p class="card-title text-truncate mb-1">{{ product.name }}</p>
+                                </a>
+                                <p class="card-text text-truncate mb-2" style="max-height: 40px; overflow: hidden;">
+                                    {{ product.description }}
+                                </p>
+                                <div class="d-flex justify-content-between align-items-center mt-auto">
+                                    {% if product.discount %}
+                                        <p><s>{{ product.price }} ₽</s></p>
+                                        <p><strong>{{ product.sell_price }} ₽</strong></p>
+                                        <span class="badge bg-warning text-dark">Скидка {{ product.discount }} %</span>
+                                    {% else %}
+                                        <p><strong>{{ product.price }} ₽</strong></p>
+                                    {% endif %}
+                                    <a href="#" class="btn add-to-cart">
+                                        <img class="mx-1" src="{% static 'deps/icons/cart-plus.svg' %}" alt="Catalog Icon"
+                                             width="32" height="32">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    <!-- Пагинация -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center my-4">
+            <div class="custom-shadow d-flex">
+                 <li class="page-item {% if not goods.has_previous %} disabled {% endif %}">
+                    <a class="page-link" href="
+                    {% if goods.has_previous %}
+                        ?{% change_params page=goods.previous_page_number %}
+                    {% endif %}">
+                        Пред.
+                    </a>
+                </li>
+
+                <li class="page-item {% if goods.number == 1 %}active{% endif %}">
+                    <a class="page-link" href="?{% change_params page=1 %}">1</a>
+                </li>
+
+                {% if goods.number > 4 %}
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                {% endif %}
+
+                {% for page in goods.paginator.page_range %}
+                    {% if page >= goods.number|add:-2 and page <= goods.number|add:2 and page != 1 and page != goods.paginator.num_pages %}
+                        <li class="page-item {% if goods.number == page %}active{% endif %}">
+                            <a class="page-link" href="?{% change_params page=page %}">
+                                {{ page }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+
+                {% if goods.number < goods.paginator.num_pages|add:-3 %}
+                    <li class="page-item disabled">
+                        <span class="page-link">...</span>
+                    </li>
+                {% endif %}
+
+                {% if goods.paginator.num_pages > 1 %}
+                    <li class="page-item {% if goods.number == goods.paginator.num_pages %}active{% endif %}">
+                        <a class="page-link"
+                           href="?{% change_params page=goods.paginator.num_pages %}">
+                            {{ goods.paginator.num_pages }}
+                        </a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item {% if not goods.has_next %} disabled {% endif %}">
+                    <a class="page-link" href="
+                    {% if goods.has_next %}
+                        ?{% change_params page=goods.next_page_number %}
+                    {% endif %}">
+                        След.
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </nav>
+</section>
+{% endblock content %}
