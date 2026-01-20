@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block local_css %}
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+{% endblock local_css %}
+
+{% block content %}
+<section id="profile" style="height: auto;padding: 105px 0px;">
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <!-- ПРОФИЛЬ -->
+            <div class="col-lg-4">
+                <div class="card shadow-sm border-0">
+                    <div class="card-body text-center">
+
+                        <h4 class="mb-4">Профиль пользователя</h4>
+
+                        <form action="{% url 'users:profile' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% if user.image %}
+                                <img src="{{ user.image.url }}"
+                                     alt="Аватар пользователя" class="img-fluid rounded-circle"
+                                     style="max-width: 150px;">
+                            {% else %}
+                                <img src="{% static 'deps/icons/baseavatar.png' %}"
+                                    alt="Аватар пользователя" class="rounded-circle mb-3"
+                                    style="width: 140px; height: 140px; object-fit: cover;">
+                            {% endif %}
+                            <input type="file" class="form-control mb-3" accept="id_image"
+                                name='image'
+                                accept="image/*">
+                            {% if form.image.errors %}
+                                <div class="alert alert-danger alert-dismissible fade show">{{form.image.errors}}</div>
+                            {% endif %}
+                            <div class="mb-3">
+                                <label for="id_first_name" class="form-label">Имя*</label>
+                                <input type="text" class="form-control" id="id_first_name"
+                                    name="first_name"
+                                    placeholder="Введите ваше имя"
+                                    value="{{ form.first_name.value }}"
+                                    required>
+                                {% if form.first_name.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.first_name.errors}}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="id_last_name" class="form-label">Фамилия*</label>
+                                <input type="text" class="form-control" id="id_last_name"
+                                    name="last_name"
+                                    placeholder="Введите вашу фамилию"
+                                    value="{{ form.last_name.value }}"
+                                    required>
+                                {% if form.last_name.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.last_name.errors}}</div>
+                                 {% endif %}
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="id_username" class="form-label">Имя пользователя*</label>
+                                <input type="text" class="form-control" id="id_username"
+                                    name="username"
+                                    placeholder="Введите ваше имя пользователя"
+                                    value="{{ form.username.value }}"
+                                    required>
+                                {% if form.username.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.username.errors}}</div>
+                                {% endif %}
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="id_email" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="id_email"
+                                    name="email"
+                                    placeholder="Введите ваш email *youremail@example.com"
+                                    value="{{ form.email.value }}"
+                                    required>
+                                {% if form.email.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
+                                {% endif %}
+                            </div>
+
+                            <button class="btn btn-dark w-100">
+                                Сохранить изменения
+                            </button>
+
+                            <a href="{% url 'users:logout' %}" class="btn btn-outline-danger w-100">
+                                Выйти из аккаунта
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- КОРЗИНА -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body">
+
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="mb-0">Корзина</h4>
+                            <a class="btn btn-outline-dark" href="../orders/create_order.html">
+                                Оформить заказ
+                            </a>
+                        </div>
+
+                        <div id="cart-items-container">
+                            <!-- Товары корзины -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ЗАКАЗЫ -->
+                <div class="card shadow-sm border-0">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="mb-0">Мои заказы</h4>
+                            <span class="text-muted">Всего: 2</span>
+                        </div>
+                        <!-- ЗАКАЗ -->
+                        <div class="card mb-3 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>Заказ №256</strong>
+                                        <span class="text-muted ms-2">09.09.2023 • 09:04</span>
+                                    </div>
+                                    <span class="badge bg-warning text-dark px-3 py-2">
+                                        В обработке
+                                    </span>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table align-middle mb-3">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Товар</th>
+                                            <th class="text-center">Кол-во</th>
+                                            <th class="text-end">Цена</th>
+                                            <th class="text-end">Сумма</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Плюшевый зайчик</td>
+                                            <td class="text-center">1</td>
+                                            <td class="text-end">2550 ₽</td>
+                                            <td class="text-end fw-semibold">2550 ₽</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                    <span class="text-muted">Способ оплаты: Онлайн</span>
+                                    <h5 class="mb-0">Итого: 2550 ₽</h5>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ЗАКАЗ -->
+                        <div class="card mb-3 border-0 shadow-sm">
+                            <div class="card-body">
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div>
+                                        <strong>Заказ №248</strong>
+                                        <span class="text-muted ms-2">01.08.2023 • 11:28</span>
+                                    </div>
+                                    <span class="badge bg-success px-3 py-2">
+                                        Получен
+                                    </span>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table align-middle mb-3">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Товар</th>
+                                            <th class="text-center">Кол-во</th>
+                                            <th class="text-end">Цена</th>
+                                            <th class="text-end">Сумма</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Сумка "Золотая осень"</td>
+                                            <td class="text-center">2</td>
+                                            <td class="text-end">3000 ₽</td>
+                                            <td class="text-end fw-semibold">6000 ₽</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
+                                    <span class="text-muted">Способ оплаты: При получении</span>
+                                    <h5 class="mb-0">Итого: 60 ₽</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
