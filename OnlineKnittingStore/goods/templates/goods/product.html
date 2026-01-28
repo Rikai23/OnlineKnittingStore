@@ -74,9 +74,12 @@
                              В наличии: <b>{{ product.quantity }}</b> шт.
                         </div>
                     </div>
-                    <button class="btn btn-primary btn-lg px-4 mt-2 w-100">
+
+                    <a href="{% url 'cart:cart_add' %}" class="btn btn-primary btn-lg px-4 mt-2 w-100 add-to-cart" data-product-id="{{ product.id }}">
+                        {% csrf_token %}
                         <i class="fa fa-shopping-cart me-2"></i> Добавить в корзину
-                    </button>
+                    </a>
+
                     <hr class="my-4">
                     <h5 style="font-weight: 700;">О товаре</h5>
                     <p class="lh-lg">

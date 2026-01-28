@@ -3,6 +3,7 @@ from django.db import models
 
 class User(AbstractUser):
     image = models.ImageField(upload_to='user_images', null=True, blank=True, verbose_name='Аватар')
+    phone_number = models.CharField(max_length=10, null=True, blank=True, verbose_name='Номер телефона')
 
     class Meta:
         db_table = 'user'

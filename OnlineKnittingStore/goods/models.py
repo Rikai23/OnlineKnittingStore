@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 
@@ -40,6 +42,9 @@ class Products(models.Model):
             return round(self.price - self.price * self.discount / 100, 2)
         else:
             return self.price
+
+    def get_absolute_url(self):
+        return reverse('catalog:product', kwargs={'product_slug': self.slug})
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Products, related_name='images', on_delete=models.CASCADE)

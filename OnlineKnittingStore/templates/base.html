@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 {% load static %}
 {% load goods_tags %}
+{% load carts_tags %}
 <html lang="ru">
+
+{% user_carts request as carts %}
 
 <head>
     <meta charset="utf-8">
@@ -34,7 +37,8 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'main:index' %}#delivery">Доставка</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'catalog:index' 'all' %}">Каталог</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="{% url 'main:index' %}#contact">Контакты</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'main:index' %}#basket">Корзина</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user:users_cart' %}#cart">
+                        Корзина ( <span id="goods-in-cart-count">{{ carts.total_quantity }}</span> )</a></li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'user:profile' %}">
@@ -65,5 +69,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <script src="{% static 'js/creative.js' %}"></script>
+    <script src="{% static 'js/jquery-ajax.js' %}"></script>
 
 </body>

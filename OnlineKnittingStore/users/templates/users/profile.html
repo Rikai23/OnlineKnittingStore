@@ -100,16 +100,24 @@
                 <div class="card shadow-sm border-0 mb-4">
                     <div class="card-body">
 
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h4 class="mb-0">Корзина</h4>
-                            <a class="btn btn-outline-dark" href="../orders/create_order.html">
-                                Оформить заказ
-                            </a>
+                        <!-- Заголовок -->
+                        <h4 class="mb-4">Корзина</h4>
+
+                        <!-- Товары корзины -->
+                        <div class="container" id="cart-items-container">
+                            {% include 'carts/includes/included_cart.html' %}
                         </div>
 
-                        <div id="cart-items-container">
-                            <!-- Товары корзины -->
-                        </div>
+                        <!-- Кнопка -->
+                        {% if carts %}
+                            <div class="d-grid mt-4">
+                                <a class="btn btn-dark btn-lg"
+                                   href="{% url 'orders:create_order' %}">
+                                    Оформить заказ
+                                </a>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
 
@@ -118,90 +126,46 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
                             <h4 class="mb-0">Мои заказы</h4>
-                            <span class="text-muted">Всего: 2</span>
                         </div>
                         <!-- ЗАКАЗ -->
-                        <div class="card mb-3 border-0 shadow-sm">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <strong>Заказ №256</strong>
-                                        <span class="text-muted ms-2">09.09.2023 • 09:04</span>
+                        {% for order in orders %}
+                            <div class="card mb-3 border-0 shadow-sm">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <div>
+                                            <strong>Заказ {{ order.id }}</strong>
+                                            <span class="text-muted ms-2">{{ order.created_timestamp }}</span>
+                                        </div>
+                                        <span class="badge bg-warning px-3 py-2">
+                                            {{order.status}}
+                                        </span>
                                     </div>
-                                    <span class="badge bg-warning text-dark px-3 py-2">
-                                        В обработке
-                                    </span>
-                                </div>
 
-                                <div class="table-responsive">
-                                    <table class="table align-middle mb-3">
-                                        <thead class="table-light">
-                                        <tr>
-                                            <th>Товар</th>
-                                            <th class="text-center">Кол-во</th>
-                                            <th class="text-end">Цена</th>
-                                            <th class="text-end">Сумма</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Плюшевый зайчик</td>
-                                            <td class="text-center">1</td>
-                                            <td class="text-end">2550 ₽</td>
-                                            <td class="text-end fw-semibold">2550 ₽</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="text-muted">Способ оплаты: Онлайн</span>
-                                    <h5 class="mb-0">Итого: 2550 ₽</h5>
+                                    <div class="table-responsive">
+                                        <table class="table align-middle mb-3">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Товар</th>
+                                                    <th class="text-center">Кол-во</th>
+                                                    <th class="text-end">Цена</th>
+                                                    <th class="text-end">Сумма</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for item in order.orderitem_set.all %}
+                                                    <tr>
+                                                        <td>{{ item.product.name }}</td>
+                                                        <td class="text-center">{{ item.quantity }}</td>
+                                                        <td class="text-end">{{ item.price }}</td>
+                                                        <td class="text-end fw-semibold">{{ item.products_price }}</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- ЗАКАЗ -->
-                        <div class="card mb-3 border-0 shadow-sm">
-                            <div class="card-body">
-
-                                <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <div>
-                                        <strong>Заказ №248</strong>
-                                        <span class="text-muted ms-2">01.08.2023 • 11:28</span>
-                                    </div>
-                                    <span class="badge bg-success px-3 py-2">
-                                        Получен
-                                    </span>
-                                </div>
-
-                                <div class="table-responsive">
-                                    <table class="table align-middle mb-3">
-                                        <thead class="table-light">
-                                        <tr>
-                                            <th>Товар</th>
-                                            <th class="text-center">Кол-во</th>
-                                            <th class="text-end">Цена</th>
-                                            <th class="text-end">Сумма</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Сумка "Золотая осень"</td>
-                                            <td class="text-center">2</td>
-                                            <td class="text-end">3000 ₽</td>
-                                            <td class="text-end fw-semibold">6000 ₽</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-
-                                <div class="d-flex justify-content-between align-items-center border-top pt-3">
-                                    <span class="text-muted">Способ оплаты: При получении</span>
-                                    <h5 class="mb-0">Итого: 60 ₽</h5>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>

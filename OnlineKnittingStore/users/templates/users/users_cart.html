@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block local_css %}
+    <link rel="stylesheet" href="{% static 'css/my_style.css' %}">
+{% endblock local_css %}
+
+{% block content %}
+<section id="cart" style="padding: 95px 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+
+                <div class="card p-4 shadow-sm">
+
+                    <!-- Заголовок -->
+                    <h4 class="mb-4 text-center">Корзина</h4>
+                    <div class="container" id="cart-items-container">
+                    <!-- Разметка корзины -->
+                        {% include 'carts/includes/included_cart.html' %}
+                    </div>
+
+                    <!-- Кнопка -->
+                    {% if carts %}
+                        <div class="d-grid mt-4">
+                            <a class="btn btn-dark btn-lg"
+                               href="{% url 'orders:create_order' %}">
+                                Оформить заказ
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}

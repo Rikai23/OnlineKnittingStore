@@ -1,9 +1,12 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
+from django.db.models import Prefetch
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from django.urls import reverse
 
+from carts.models import Cart
+from orders.models import OrderItem, Order
 from users.forms import ProfileForm, UserLoginForm, UserRegistrationForm
 
 def login(request):
@@ -14,9 +17,20 @@ def login(request):
             username = request.POST['username']
             password = request.POST['password']
             user = auth.authenticate(username=username, password=password)
+
+            session_key = request.session.session_key
+
             if user:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('main:index'))
+
+                if session_key:
+                    Cart.objects.filter(session_key=session_key).update(user=user)
+
+                redirect_page = request.POST.get('next', None)
+                if redirect_page and redirect_page != reverse('user:logout'):
+                    return HttpResponseRedirect(request.POST.get('next'))
+                else:
+                    return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserLoginForm()
 
@@ -36,8 +50,15 @@ def registration(request):
         form = UserRegistrationForm(data=request.POST)
         if form.is_valid():
             form.save()
+
+            session_key = request.session.session_key
+
             user = form.instance
             auth.login(request, user)
+
+            if session_key:
+                Cart.objects.filter(session_key=session_key).update(user=user)
+
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
@@ -60,9 +81,24 @@ def profile(request):
     else:
         form = ProfileForm(instance=request.user)
 
+    orders = (
+        Order.objects.filter(user=request.user).prefetch_related(
+            Prefetch(
+                'orderitem_set',
+                queryset=OrderItem.objects.select_related('product')
+            )
+        )
+        .order_by('-id')
+    )
     context = {
         'title': 'Личный кабинет',
-        'form': form
+        'form': form,
+        'orders': orders,
     }
     return render(request, 'users/profile.html', context)
+
+
+def users_cart(request):
+    return render(request, 'users/users_cart.html')
+
 
