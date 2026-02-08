@@ -2,6 +2,7 @@
 {% load static %}
 {% load goods_tags %}
 {% load carts_tags %}
+
 <html lang="ru">
 
 {% user_carts request as carts %}
@@ -57,7 +58,10 @@
         </div>
     </nav>
 
-     {% tag_categories as categories %}
+
+    {% tag_categories as categories %}
+
+
 
     {% block content %}{% endblock content %}
     {% block footer %}{% endblock footer%}

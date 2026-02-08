@@ -1,22 +1,16 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.views.generic import TemplateView
 
-from goods.models import Categories
+class IndexView(TemplateView):
+    template_name = 'main/index.html'
 
-def index(request):
-    """Обрабатывает запросы на главную страницу"""
-
-    # Список текстов, которые будут исп. на главной странице
-    texts = [
-        {
-            "title": "онлайн магазин вязаных изделий",
-            "desc": "Каждое изделие создано с теплом и вниманием к деталям. Выберите уникальные вещи, которые подарят уют и подчеркнут вашу индивидуальность."
-        }
-    ]
-
-    context = {
-        'title': "Вязаные изделия",
-        'texts': texts,
-    }
-    return render(request, 'main/index.html', context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Вязаные изделия"
+        context['texts'] = [
+            {
+                "title": "онлайн магазин вязаных изделий",
+                "desc": "Каждое изделие создано с теплом и вниманием к деталям. Выберите уникальные вещи, которые подарят уют и подчеркнут вашу индивидуальность."
+            }
+        ]
+        return context
 

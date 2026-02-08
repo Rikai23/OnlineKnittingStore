@@ -209,6 +209,7 @@ __marimo__/
 # Django specific
 db.sqlite3
 OnlineKnittingStore/media/
+OnlineKnittingStore/cache/
 
 # PyCharm specific
 .idea/
